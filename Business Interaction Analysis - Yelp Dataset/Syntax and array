@@ -230,6 +230,38 @@ FROM user
 GROUP BY name
 ORDER BY fans DESC
 
++-----------+--------+----------+
+| name      | rc_sum | fans_sum |
++-----------+--------+----------+
+| Gerald    |   2034 |      256 |
+| Lissa     |    837 |      120 |
+| bernice   |    255 |      105 |
+| Roanna    |   1039 |      104 |
+| .Hon      |   1246 |      101 |
+| Nieves    |    178 |       80 |
+| Sui       |    754 |       78 |
+| Koizumi   |    160 |       73 |
+| rebecca   |      6 |       69 |
+| Princeton |    376 |       64 |
+| Alison    |   1001 |       67 |
+| Jayd      |     39 |       60 |
+| Quisha    |    481 |       58 |
+| Renee     |    576 |       60 |
+| Dottsy    |    196 |       49 |
+| Joc       |    652 |       49 |
+| Noushky   |    133 |       48 |
+| Echo      |     42 |       46 |
+| Anton     |    158 |       44 |
+| Susanna   |    642 |       44 |
+| Starr     |    279 |       42 |
+| Hanna     |    431 |       40 |
+| kathleen  |    402 |       38 |
+| Dominic   |    869 |       37 |
+| Addy      |    110 |       36 |
++-----------+--------+----------+
+(Output limit exceeded, 25 of 3454 total rows shown)
+
+
 	
 9. Are there more reviews with the word "love" or with the word "hate" in them?
 
@@ -241,6 +273,13 @@ ORDER BY fans DESC
 SELECT COUNT (CASE WHEN text LIKE '%love%' THEN text END) AS love_count
 , COUNT (CASE WHEN text LIKE '%hate%' THEN text END) AS hate_count
 FROM review
+
++------------+------------+
+| love_count | hate_count |
++------------+------------+
+|       1780 |        232 |
++------------+------------+
+
 	
 10. Find the top 10 users with the most fans:
 
@@ -298,6 +337,16 @@ FROM (business AS b INNER JOIN category AS ct on b.id = ct.business_id)
 WHERE b.city = 'Las Vegas' AND ct.category = 'Shopping'
 GROUP BY b.stars
 ORDER BY b.stars
+
++--------------------------------+-----------+-------+----------+----------------------+---------+--------+-------------+
+| name                           | city      | stars | category | hours                | workday | rv_sum | postal_code |
++--------------------------------+-----------+-------+----------+----------------------+---------+--------+-------------+
+| Walgreens                      | Las Vegas |   2.5 | Shopping | Saturday|8:00-22:00  |       7 |     42 | 89121       |
+| Wooly Wonders                  | Las Vegas |   3.5 | Shopping | Saturday|10:00-16:00 |       6 |     66 | 89121       |
+| Red Rock Canyon Visitor Center | Las Vegas |   4.5 | Shopping | Saturday|8:00-16:30  |       7 |    224 | 89161       |
+| Desert Medical Equipment       | Las Vegas |   5.0 | Shopping | Monday|8:00-17:00    |       5 |     20 | 89118       |
++--------------------------------+-----------+-------+----------+----------------------+---------+--------+-------------+
+
 		
 		
 2. Group business based on the ones that are open and the ones that are closed. What differences can you find between the ones that are still open and the ones that are closed? List at least two differences and the SQL code you used to arrive at your answer.
@@ -317,6 +366,13 @@ SELECT b.is_open
 FROM business AS b INNER JOIN checkin AS ci on b.id = ci.business_id
 GROUP BY b.is_open
 	
++---------+----------------------+----------------+
+| is_open | SUM (b.review_count) | SUM (ci.count) |
++---------+----------------------+----------------+
+|       0 |                  192 |             15 |
+|       1 |                 6743 |            823 |
++---------+----------------------+----------------+
+
 	
 3. For this last part of your analysis, you are going to choose the type of analysis you want to conduct on the Yelp dataset and are going to prepare the data for analysis.
 
