@@ -5,4 +5,4 @@ This database is not a statistical sample of consumers’ experiences in the mar
 
 I am used Google BigQuery to gather the data and Looker Studio (Google DataStudio) to visualize the data into an insightful dashboard.
 
-![1_AIFnzAedV8ZBUOY6X-f2GQ](https://user-images.githubusercontent.com/110964962/185071183-12794310-82d9-4def-b4b4-a2ab3eb72c00.png)
+![1_AIFnzAedV8ZBUOY6X-f2GQ](https://github.com/alberthero319/SQL-Project/blob/main/The%20Consumer%20Complaint/CFPB_Complaints_page-0001.jpg?raw=true)
