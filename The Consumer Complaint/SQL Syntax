@@ -1,1 +1,43 @@
-A
+-- SQL Syntax
+
+-- The main data (Used in graph) --
+SELECT
+  DATE_TRUNC(date_received, MONTH) As monthly, 
+  product,
+  subproduct,
+  issue,
+  company_response_to_consumer,
+  COUNT(DISTINCT complaint_id) AS num_case
+FROM
+  `bigquery-public-data.cfpb_complaints.complaint_database` 
+GROUP BY
+  1,2,3,4,5
+ORDER BY
+  1,2,3,4,5 desc
+  
+-- The Geoloc Data (Used in heatmap) --
+SELECT
+  zip_code, 
+  product,
+  company_response_to_consumer,
+  COUNT(DISTINCT complaint_id) AS num_case
+FROM
+  `bigquery-public-data.cfpb_complaints.complaint_database` 
+  WHERE date_received >= DATE_TRUNC(current_date, MONTH)
+GROUP BY
+  1,2,3
+ORDER BY
+  1,2,3 desc
+  
+-- The Top 5 Complained Companies --
+SELECT
+  company_name,
+  COUNT(DISTINCT complaint_id) AS num_case
+FROM
+  `bigquery-public-data.cfpb_complaints.complaint_database` 
+  WHERE date_received >= DATE_TRUNC(current_date, MONTH)
+GROUP BY
+  1
+ORDER BY
+  2 desc
+  LIMIT 5
