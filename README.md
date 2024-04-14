@@ -2,7 +2,7 @@
 
 ## 👋 About Me
 
-Hey there! I'm **Albert Hero**, a data enthusiast on a mission to make numbers dance and charts sing!
+Hi there! I'm **Albert Hero**, a data enthusiast on a mission to make numbers dance and charts sing!
 With a background in data and fraud analyst, I'm all about turning raw data into dazzling insights and stories that captivate minds and hearts.
 
 ## 🌟 My Projects
